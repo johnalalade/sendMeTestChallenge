@@ -6,6 +6,11 @@ const pg = require('pg');
 const connectionString = process.env.POSTGRE_URL
 var client = new pg.Client(connectionString);
 
+// Welcome message
+const running = (req, res, next) => {
+    res.send("Server is up and running...")
+}
+
 // To be  ran only once to create table
 const createDB = (req, res, next) => {
     // Connecting to database
@@ -26,6 +31,7 @@ const createDB = (req, res, next) => {
  
 }
 
+// Register user
 const register = (req, res, next) => {
     // Connecting to Database
     client.connect(function(err) {
@@ -60,6 +66,7 @@ const register = (req, res, next) => {
 })
 }
 
+// Login
 const login = (req, res, next) => {
     client.connect(function(err) {
         if(err) {
@@ -108,6 +115,7 @@ const login = (req, res, next) => {
         
 }
 
+// adding money
 const addMoney = (req, res, next) => {
     let balance
     client.connect(function(err) {
@@ -136,6 +144,7 @@ const addMoney = (req, res, next) => {
 })
 }
 
+// sending Money
 const sendMoney = (req, res, next) => {
     let balance
     client.connect(function(err) {
@@ -164,6 +173,7 @@ const sendMoney = (req, res, next) => {
 })
 }
 
+// deleting user
 const deleteUser = (req, res, next) => {
     client.connect(function(err) {
         if(err) {
@@ -184,5 +194,5 @@ const deleteUser = (req, res, next) => {
 }
 
 module.exports = {
-    createDB, register, login, addMoney, sendMoney, deleteUser
+   running, createDB, register, login, addMoney, sendMoney, deleteUser
 }

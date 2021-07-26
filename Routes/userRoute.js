@@ -4,6 +4,8 @@ const authenticate = require('../MiddleWares/authenticate')
 // Initializing express router
 const express = require('express');
 const user = express.Router()
+
+user.get('/', userController.running)
 user.get('/create', userController.createDB)
 user.post('/register', userController.register)
 user.post('/login', userController.login)
