@@ -11,4 +11,5 @@ user.post('/addMoney', authenticate, userController.addMoney)
 user.post('/sendMoney', authenticate, userController.sendMoney)
 user.post('/delete', authenticate, userController.deleteUser)
 
+
 module.exports = user
